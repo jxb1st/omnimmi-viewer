@@ -1,36 +1,281 @@
 [
   {
-    "video": "fP8zX6UKsRA.mp4",
+    "video": "jGM8EImhpXg.mp4",
     "qa": [
       {
-        "question": "What is the first step mentioned in the video for assembling the sofa?",
-        "answer": "Install legs of sofa",
-        "timestamp": "33.0 -- 41.0"
+        "question": "What is the task of the instruction video?",
+        "answer": "Cook Omelet",
+        "timestamp": "0.0 -- 36.0"
       },
       {
-        "question": "After ##ANSWER##, what should be done next according to the video?",
-        "answer": "Place cushion and backrest",
-        "timestamp": "43.0 -- 45.0"
+        "question": "What's the first step of ##ANSWER##?",
+        "answer": "Pouring the egg into the pot",
+        "timestamp": "36.0 -- 40.0"
+      },
+      {
+        "question": "What do you do after the step from ##ANSWER##?",
+        "answer": "fry eggs",
+        "timestamp": "41.0 -- 70.0"
       }
     ]
   },
   {
-    "video": "gOATE_0D-48.2.mp4",
+    "video": "4q7uW0w3ZRc.mp4",
     "qa": [
       {
-        "question": "What does the caption instruct someone to do under the image of a woman showering?",
-        "answer": "PLEASE SHOWER!",
-        "timestamp": "0.0 -- 4.12"
+        "question": "What is the first step in practising skiing aerials?",
+        "answer": "Rise to the sky",
+        "timestamp": "1.0 -- 22.0"
       },
       {
-        "question": "What surrounds the flight attendant as she stands in the aisle, when the background voice says ##ANSWER##?",
-        "answer": "a male passenger radiating green smoke",
-        "timestamp": "8.48 -- 10.88"
+        "question": "What follows after ##ANSWER## in skiing aerial practice?",
+        "answer": "Ski down from the hill",
+        "timestamp": "22.0 -- 23.0"
+      }
+    ]
+  },
+  {
+    "video": "bZJZsfLKIRc.mp4",
+    "qa": [
+      {
+        "question": "What should you do with the coffee beans to make coffee?",
+        "answer": "Filtrate the coffee beans",
+        "timestamp": "105.0 -- 116.0"
       },
       {
-        "question": "Who is unable to fasten the seat belt after the background voice says \"##ANSWER##\"?",
-        "answer": "a man in an airplane seat with a big belly",
-        "timestamp": "17.32 -- 21.64"
+        "question": "After you ##ANSWER##, what is the next step?",
+        "answer": "Add some ingredients in the coffee",
+        "timestamp": "163.0 -- 166.0"
+      }
+    ]
+  },
+  {
+    "video": "i6DHD6IRHhM.mp4",
+    "qa": [
+      {
+        "question": "What is the first step in the video?",
+        "answer": "Dig a pit with proper size",
+        "timestamp": "5.0 -- 14.0"
+      },
+      {
+        "question": "After you ##ANSWER##, what should you do next?",
+        "answer": "Fill the tree into the pit",
+        "timestamp": "46.0 -- 53.0"
+      },
+      {
+        "question": "Once you ##ANSWER##, what is the final step?",
+        "answer": "Fill the pit with some soil",
+        "timestamp": "90.0 -- 109.0"
+      }
+    ]
+  },
+  {
+    "video": "_2N1hAfuOBI.mp4",
+    "qa": [
+      {
+        "question": "What do you add to the blender to start making the smoothie?",
+        "answer": "Ice cubes",
+        "timestamp": "15.0 -- 19.0"
+      },
+      {
+        "question": "After adding ##ANSWER##, what is the next step in the process?",
+        "answer": "Shake and juice",
+        "timestamp": "21.0 -- 23.0"
+      },
+      {
+        "question": "Before you ##ANSWER##, what ingredients do you need to put into the juicer?",
+        "answer": "Strawberries and other fruits",
+        "timestamp": "28.0 -- 31.0"
+      }
+    ]
+  },
+  {
+    "video": "grp-b93ab731-52c3-43b2-9d99-4229663ba67c.mp4",
+    "qa": [
+      {
+        "question": "What is done after adding water to the saucepan?",
+        "answer": "Set the heat temperature on the saucepan",
+        "timestamp": "18.3084 -- 21.87499"
+      },
+      {
+        "question": "What happens after ##ANSWER##?",
+        "answer": "Organise utensils on the countertop",
+        "timestamp": "22.106 -- 32.86144"
+      },
+      {
+        "question": "What task follows after ##ANSWER##?",
+        "answer": "Remove the outer skin of the onion",
+        "timestamp": "33.394 -- 86.56"
+      }
+    ]
+  },
+  {
+    "video": "26b4e1c1-54c7-419f-b2d3-63ea52fd3540.mp4",
+    "qa": [
+      {
+        "question": "What is done after adding milk in a container?",
+        "answer": "Heat milk",
+        "timestamp": "32.14728 -- 41.009"
+      },
+      {
+        "question": "What happens after ##ANSWER##?",
+        "answer": "Pours flour in bowl",
+        "timestamp": "50.42193 -- 72.55228"
+      },
+      {
+        "question": "What is done after milk is removed from microwave?",
+        "answer": "Stirs milk with spoon",
+        "timestamp": "109.05344 -- 117.407"
+      }
+    ]
+  },
+  {
+    "video": "PbXgf2fzjDo.7.mp4",
+    "qa": [
+      {
+        "question": "What does the video mention about the material?",
+        "answer": "Converted into liquid form",
+        "timestamp": "0.0 -- 2.8695"
+      },
+      {
+        "question": "After the material is ##ANSWER##, what happens next?",
+        "answer": "The liquid is applied to the surface of the resin and dried",
+        "timestamp": "2.9029 -- 7.7077"
+      },
+      {
+        "question": "What does the background voice mention after ##ANSWER##?",
+        "answer": "The object doesn\u2019t burn",
+        "timestamp": "11.645 -- 17.2172"
+      }
+    ]
+  },
+  {
+    "video": "4ZppEwEzpcU.5.mp4",
+    "qa": [
+      {
+        "question": "What is shown in the video at Sidi Haneish Airfield?",
+        "answer": "An aircraft parked on the ground with barrels and soldiers around",
+        "timestamp": "0.0 -- 3.003"
+      },
+      {
+        "question": "What are the soldiers doing next to ##ANSWER##?",
+        "answer": "Rolling a barrel off a platform",
+        "timestamp": "0.0 -- 3.003"
+      },
+      {
+        "question": "What is happening while the soldiers are ##ANSWER##?",
+        "answer": "The propeller is turning",
+        "timestamp": "4.9716 -- 7.5409"
+      }
+    ]
+  },
+  {
+    "video": "P4vyy1hvQ2U.10.mp4",
+    "qa": [
+      {
+        "question": "What items are shown in the begining of the video?",
+        "answer": "A jar of beans, a blue cup, and a brown collapsible cup",
+        "timestamp": "0.0 -- 2.8779"
+      },
+      {
+        "question": "What happens to a person after showing ##ANSWER##?",
+        "answer": "A person puts a lid on the brown collapsible cup and folds it",
+        "timestamp": "2.9196 -- 8.3834"
+      },
+      {
+        "question": "What else is present along with the ##ANSWER## on the surface?",
+        "answer": "A black glowing orb with a base",
+        "timestamp": "2.9196 -- 8.3834"
+      }
+    ]
+  },
+  {
+    "video": "RE2XqeZMIsM.7.mp4",
+    "qa": [
+      {
+        "question": "What location is mentioned in the video?",
+        "answer": "Grand Lake of the Cherokees and Grove, Oklahoma",
+        "timestamp": "3.1031 -- 15.2486"
+      },
+      {
+        "question": "What event takes place at ##ANSWER##?",
+        "answer": "A weeklong tournament",
+        "timestamp": "3.1031 -- 15.2486"
+      },
+      {
+        "question": "What is the reward for competing in ##ANSWER##?",
+        "answer": "A chance to go to the FLW Cup",
+        "timestamp": "15.2819 -- 18.4518"
+      }
+    ]
+  },
+  {
+    "video": "rIhzyR-wjDM.16.mp4",
+    "qa": [
+      {
+        "question": "What is happening at the scene on TV as described in the beginning of the video?",
+        "answer": "A man in white clothes is compressing his lips and opening his arms at the same time.",
+        "timestamp": "0.0 -- 2.5692"
+      },
+      {
+        "question": "What happens after ##ANSWER##?",
+        "answer": "A man holds a red object while walking on the road",
+        "timestamp": "2.6026 -- 3.6036"
+      }
+    ]
+  },
+  {
+    "video": "4Q1s2y0cE8o.55.mp4",
+    "qa": [
+      {
+        "question": "What type of candles are shown in the video?",
+        "answer": "Candles in the shape of egg shells",
+        "timestamp": "0.0 -- 2.0"
+      },
+      {
+        "question": "Instead of a candlestick, what is suggested to hold the ##ANSWER##?",
+        "answer": "Egg tray",
+        "timestamp": "2.04 -- 5.32"
+      },
+      {
+        "question": "How many ##ANSWER## can people make?",
+        "answer": "As many as they want",
+        "timestamp": "5.36 -- 8.72"
+      }
+    ]
+  },
+  {
+    "video": "HXtpWYWdsiY.3.mp4",
+    "qa": [
+      {
+        "question": "What does the background voice say is essential to keep the yellow car running?",
+        "answer": "Technology",
+        "timestamp": "7.5075 -- 12.012"
+      },
+      {
+        "question": "What car requires ##ANSWER## to keep running?",
+        "answer": "The yellow car",
+        "timestamp": "7.5075 -- 12.012"
+      }
+    ]
+  },
+  {
+    "video": "IzCoEaGL8Gs.2.mp4",
+    "qa": [
+      {
+        "question": "What is happening at the start of the video?",
+        "answer": "A baseball player is wearing a white jersey and standing on the field.",
+        "timestamp": "0.0 -- 2.3023"
+      },
+      {
+        "question": "What does the player do after ##ANSWER##?",
+        "answer": "He puts up his hands in front of his chest and then runs on the field.",
+        "timestamp": "0.0 -- 2.3023"
+      },
+      {
+        "question": "What is being discussed when ##ANSWER##?",
+        "answer": "A player doing more damage off Josh Tomlin.",
+        "timestamp": "2.3357 -- 5.0384"
       }
     ]
   }

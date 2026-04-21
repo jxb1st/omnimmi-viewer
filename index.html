@@ -465,7 +465,7 @@ video {
 <body>
 <div class="banner" id="banner">
   <a href="https://jxb1st.github.io/datasets/" class="back-link">&larr; Dataset panel</a>
-  <span>Showing a <strong>12-sample</strong> representative subset (2 per task). Full benchmark: 600+ samples — see
+  <span>Showing a <strong>71-sample</strong> representative subset spread across the duration range. Full benchmark: 1,400 samples — see
     <a href="https://github.com/OmniMMI/OmniMMI" target="_blank">OmniMMI</a>.
   </span>
 </div>
@@ -498,6 +498,7 @@ video {
 </header>
 
 <main>
+  <section class="stats-panel" id="overview-panel"></section>
   <aside class="panel" id="metadata-panel">
     <h2>Metadata</h2>
     <div id="metadata-fields"></div>
@@ -550,6 +551,7 @@ video {
 
   const cache = {};
   let durations = null;
+  let fullStats = null;
   const state = {
     task: "ap",
     sampleIdx: 0,
@@ -601,6 +603,23 @@ video {
       if (res.ok) durations = await res.json();
     } catch (e) { /* stats panel will render a hint */ }
   }
+
+  async function loadFullStats() {
+    try {
+      const res = await fetch("full_dataset_stats.json");
+      if (res.ok) fullStats = await res.json();
+    } catch (e) { /* overview panel will hide */ }
+  }
+
+  // Map viewer task key (ap/sg/md/pa/pt/si) to the full-stats JSON key.
+  const FULL_STATS_KEY = {
+    ap: "action_prediction",
+    sg: "dynamic_state_grounding",
+    md: "multiturn_dependency_reasoning",
+    pa: "proactive_alerting",
+    pt: "proactive_turntaking",
+    si: "speaker_identification",
+  };
 
   function fmtDuration(s) {
     if (s == null || !isFinite(s)) return "-";
@@ -795,26 +814,66 @@ video {
     panel.innerHTML = html;
   }
 
+  function renderOverview() {
+    const panel = $("overview-panel");
+    if (!fullStats) {
+      panel.innerHTML = "";
+      return;
+    }
+    const ov = fullStats.overall;
+    const s = ov.stats;
+    let html = '<h2>Full Dataset Overview &middot; ' + ov.total_samples + ' samples across ' + ov.total_tasks + ' tasks</h2>';
+    html += '<div class="stats-summary">' +
+      '<span>total_samples<b>' + ov.total_samples + '</b></span>' +
+      '<span>total_duration<b>' + fmtDuration(s.sum) + '</b></span>' +
+      '<span>min<b>' + fmtDuration(s.min) + '</b></span>' +
+      '<span>p25<b>' + fmtDuration(s.p25) + '</b></span>' +
+      '<span>median<b>' + fmtDuration(s.median) + '</b></span>' +
+      '<span>mean<b>' + fmtDuration(s.mean) + '</b></span>' +
+      '<span>p75<b>' + fmtDuration(s.p75) + '</b></span>' +
+      '<span>p90<b>' + fmtDuration(s.p90) + '</b></span>' +
+      '<span>max<b>' + fmtDuration(s.max) + '</b></span>' +
+      '</div>';
+
+    // Per-task mini breakdown
+    html += '<div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;">';
+    Object.keys(TASKS).forEach(k => {
+      const full = fullStats.per_task[FULL_STATS_KEY[k]];
+      if (!full || !full.stats) return;
+      const st = full.stats;
+      html += '<div style="border:1px solid var(--border);padding:8px 12px;border-radius:6px;background:var(--bg);">' +
+        '<div style="font-weight:600;color:var(--accent);font-size:13px;">' + TASKS[k].label + '</div>' +
+        '<div style="color:var(--muted);font-size:11px;margin-top:4px;">' +
+          'n=' + st.n +
+          ' &middot; median ' + fmtDuration(st.median) +
+          ' &middot; total ' + fmtDuration(st.sum) +
+          ' &middot; range ' + fmtDuration(st.min) + '&ndash;' + fmtDuration(st.max) +
+        '</div></div>';
+    });
+    html += '</div>';
+    panel.innerHTML = html;
+  }
+
   function renderStats(taskKey, taskData, currentDur) {
     const panel = $("stats-panel");
-    if (!durations) {
+    if (!fullStats) {
       panel.innerHTML =
         '<h2>Video Length Stats</h2>' +
-        '<p class="note">file_durations.json not found. Run <code>python compute_durations.py</code> in the repo root to generate it.</p>';
+        '<p class="note">full_dataset_stats.json not found.</p>';
       return;
     }
-    const durs = getDurationsForTask(taskKey, taskData);
-    const stats = computeStats(durs);
-    if (!stats) {
-      panel.innerHTML = '<h2>Video Length Stats</h2><p class="note">No duration data available for this task.</p>';
+    const full = fullStats.per_task[FULL_STATS_KEY[taskKey]];
+    if (!full || !full.stats) {
+      panel.innerHTML = '<h2>Video Length Stats</h2><p class="note">No stats for this task.</p>';
       return;
     }
-    const unit = (taskKey === "sg" || taskKey === "md") ? "per-turn clip" : "per-sample video";
+    const stats = full.stats;
+    const unit = full.unit;
     const maxCount = Math.max.apply(null, stats.counts) || 1;
     const currentBucket = currentDur != null ? bucketOf(currentDur) : -1;
 
     let html = '<h2>Video Length Distribution &middot; ' + TASKS[taskKey].label +
-      ' &middot; ' + unit + ' (n=' + stats.n + ')</h2>';
+      ' &middot; ' + unit + ' (full dataset, n=' + stats.n + ')</h2>';
 
     html += '<div class="stats-summary">' +
       '<span>min<b>' + fmtDuration(stats.min) + '</b></span>' +
@@ -867,7 +926,7 @@ video {
       placeholder.innerHTML =
         '<div><b>Video not included in this subset</b></div>' +
         '<div style="font-family:monospace;font-size:11px;margin-top:6px;">' + escape(src) + '</div>' +
-        '<div style="font-size:11px;margin-top:6px;max-width:380px;">Only 12 representative samples are hosted here to keep the viewer under the GitHub Pages quota.</div>';
+        '<div style="font-size:11px;margin-top:6px;max-width:380px;">Only 71 representative samples are hosted here to keep the viewer under the GitHub Pages quota.</div>';
       v.replaceWith(placeholder);
     });
     return v;
@@ -1079,6 +1138,8 @@ video {
   // ------- Init -------
   async function init() {
     await loadDurations();
+    await loadFullStats();
+    renderOverview();
     const taskSel = $("task-select");
     Object.keys(TASKS).forEach(k => {
       const opt = document.createElement("option");

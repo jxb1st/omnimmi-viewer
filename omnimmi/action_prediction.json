@@ -1,26 +1,190 @@
 [
   {
-    "video": "8e1655e6-70dd-4280-943c-5d892867495e_548.mp4",
-    "question": "My obligation is to Dry and put away cup and cloth. The task's progress is captured in the video, what do you suggest as my next move?",
-    "answer": "hang cloth",
+    "video": "db63576c-eacf-4ee0-a9a3-e4b671a833e6_565.mp4",
+    "question": "I am undertaking Hold and inspect the bowl with french beans. The video demonstrates the task's progress, Can you verify the accuracy of my work for the next task?",
+    "answer": "hold bowl",
     "vocab": [
-      "dry cup",
-      "place bowl in cup",
-      "pick up cup",
-      "put cup on sink",
-      "hang cloth"
+      "hold bowl",
+      "look at hand",
+      "remove hand",
+      "look at french beans in bowl"
     ]
   },
   {
-    "video": "690f58f1-f18c-4415-bab0-787c2f83d051_473.mp4",
-    "question": "I am performing Stir the rice in the rice cooker, and the video displays the progress made, How does what I'm doing now lead to what I should do next?",
-    "answer": "stir rice with serving spoon",
+    "video": "b785626b-2e72-4ee4-84de-16db332ecac6_752.mp4",
+    "question": "I am working on Prepare plates for serving. The video showcases the progress, What are the resources I'll need for the next task?",
+    "answer": "pick up plate",
     "vocab": [
-      "hold serving spoon in rice cooker",
-      "leave serving spoon",
-      "stir rice with serving spoon",
-      "move rice cooker",
-      "stir rice"
+      "look in cabinet",
+      "adjust gas cooker heat",
+      "put down chopsticks",
+      "open cabinet",
+      "pick up plate"
+    ]
+  },
+  {
+    "video": "6745e6c6-27d3-433e-85f9-ecebbc991868_746.mp4",
+    "question": "I am responsible for executing Clean the scissors. The video's content shows the task's development, Can you recreate the steps I'll need to take?",
+    "answer": "pick up scissors",
+    "vocab": [
+      "press soap",
+      "pick up scissors",
+      "press sponge",
+      "select sponge"
+    ]
+  },
+  {
+    "video": "99a250b0-a3bd-45de-9fb6-6f9a418dce1a_59.mp4",
+    "question": "I have been assigned to Serve the cooked meat and put away the cooking utensils, and the video demonstrates my progress, What should I do next?",
+    "answer": "pour meat on plate",
+    "vocab": [
+      "turn off gas cooker",
+      "pour meat on plate",
+      "push plate aside",
+      "put down chopping sticks",
+      "pick up fry pan"
+    ]
+  },
+  {
+    "video": "ed8d28d1-5d1e-4370-a946-9c39fe5c679b_131.mp4",
+    "question": "My current task is to Beating the eggs. The task's progress is demonstrated in the provided video. How does what I should do next impact my future tasks?",
+    "answer": "put down spoon",
+    "vocab": [
+      "pick up spoon",
+      "put down spoon",
+      "hold bowl",
+      "beat egg with chopstick",
+      "put chopstick on cabinet"
+    ]
+  },
+  {
+    "video": "79f47a60-f1e9-4232-88b8-a1836e7dfd30_89.mp4",
+    "question": "I am responsible for executing Prepare the meat. The video's content shows the task's development, Can you provide an instruction for the next task?",
+    "answer": "take bowl from cabinet",
+    "vocab": [
+      "open cabinet drawer",
+      "place bowl on cabinet",
+      "take bowl from cabinet",
+      "put nylon paper in dustbin bag",
+      "touch meat on cabinet"
+    ]
+  },
+  {
+    "video": "1d920f78-73d0-4323-b8b1-be51d27a69a7_303.mp4",
+    "question": "My obligation is to Clean the spoon. The task's progress is captured in the video, What are the opportunities I should consider in the next task?",
+    "answer": "scrape food off spoon",
+    "vocab": [
+      "pick up fork",
+      "scrape food off spoon",
+      "pick up spoon",
+      "put fork in bowl"
+    ]
+  },
+  {
+    "video": "bf6e4f01-7891-42fe-9b52-1b5033379b44_680.mp4",
+    "question": "As I am in the process of Transfer food between bowls, with my progress visible in the video What should be my next action? ",
+    "answer": "scoop food from basin",
+    "vocab": [
+      "put food in bowl",
+      "scoop food from bowl",
+      "insert spoon",
+      "scoop food from basin",
+      "align food in basin",
+      "transfer food to basin"
+    ]
+  },
+  {
+    "video": "c850f043-d449-4976-b483-aa49c15e3554_688.mp4",
+    "question": "My current task is to Add oil to the flour. The task's progress is demonstrated in the provided video. How does what I should do next impact the bigger picture?",
+    "answer": "put down powder packet",
+    "vocab": [
+      "take packet of powder",
+      "hold bottle",
+      "put down bottle",
+      "put down powder packet"
+    ]
+  },
+  {
+    "video": "a0b24dc7-12d4-49ee-b3a3-4192a26ebdfd_593.mp4",
+    "question": "My current task is to Cleaning and storing the knife. The task's progress is demonstrated in the provided video. What are the skills I'll need to demonstrate?",
+    "answer": "put knife in cupboard",
+    "vocab": [
+      "put knife in cupboard",
+      "close cupboard",
+      "take scrub sponge",
+      "clean knife",
+      "put down scrub sponge",
+      "open cupboard",
+      "take knife"
+    ]
+  },
+  {
+    "video": "7f4225ed-a076-4530-91cf-f3903c5d7637_191.mp4",
+    "question": "My job is to Cook vegetables. The progress is visible in the video, Can you recreate the steps I'll need to take?",
+    "answer": "turn vegetables",
+    "vocab": [
+      "pick up chopstick",
+      "open drawer",
+      "turn vegetables",
+      "put vegetables in pan",
+      "put down chopstick",
+      "close drawer",
+      "light cooker",
+      "move pan",
+      "pick up vegetables"
+    ]
+  },
+  {
+    "video": "ac08c5ee-c104-4de3-bb1c-86b76e675e21_780.mp4",
+    "question": "I am assigned to Wipe and place the second glass on the table, with the task's advancement shown in the video, How does what I should do next relate to my overall goal?",
+    "answer": "place kitchen towel",
+    "vocab": [
+      "place kitchen towel",
+      "place glass on table",
+      "pick up glass from table",
+      "pour water from glass",
+      "wipe glass with kitchen towel"
+    ]
+  },
+  {
+    "video": "211b46a3-4d20-4896-82ed-d56f41d90ab3_180.mp4",
+    "question": "Currently, I am working on Retrieve food from the fridge. The video provides evidence of the task's advancement, How can I overcome them?",
+    "answer": "close fridge compartment",
+    "vocab": [
+      "close fridge compartment",
+      "open fridge compartment",
+      "open nylon in compartment",
+      "pick up apple in fridge",
+      "open fridge",
+      "put drink in fridge",
+      "put apple in fridge",
+      "carry drink",
+      "remove food from nylon"
+    ]
+  },
+  {
+    "video": "efd894dd-968a-494e-9b49-7001f71b1fbd_839.mp4",
+    "question": "I am assigned to Rinse pot lid and prepare for cooking, with the task's advancement shown in the video, What are the opportunities I should consider in the next task?",
+    "answer": "pick up pot lid in sink",
+    "vocab": [
+      "turn off sink knob",
+      "pick up pot lid in sink",
+      "return to sink",
+      "rinse lid"
+    ]
+  },
+  {
+    "video": "e3ee60f1-5a34-4682-9ebb-ffbf1ea20758_376.mp4",
+    "question": "I am engaged in Cleaning kitchen utensils and preparing food, with the video capturing the task's development, What is the most appropriate next action?",
+    "answer": "clean chopstick with napkin",
+    "vocab": [
+      "rinse bowl in sink",
+      "take small bowl",
+      "put bowl into bigger bowl",
+      "pick up chopstick from rack",
+      "clean chopstick with napkin",
+      "put chopping board in rack",
+      "clean bowl with napkin"
     ]
   }
 ]

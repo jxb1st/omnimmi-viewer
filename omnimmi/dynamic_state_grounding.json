@@ -1,31 +1,241 @@
 [
   {
-    "video": "Kd3vC0lL9C4.57.mp4",
+    "video": "76HTCZmJb7I.mp4",
     "qa": [
       {
-        "question": "According to the person in a helmet, what is he confused about?",
-        "answer": "The roar.",
-        "timestamp": "8.0747 -- 10.2769"
+        "question": "What is being done in this step?",
+        "answer": "Removing the old bulb",
+        "timestamp": "103.0 -- 110.5"
       },
       {
-        "question": "According to the person in a helmet, what is he confused about?",
-        "answer": "The bull.",
-        "timestamp": "8.0747 -- 10.2769"
+        "question": "What is being done in this step?",
+        "answer": "Installing the new bulb",
+        "timestamp": "111.0 -- 165.5"
       }
     ]
   },
   {
-    "video": "8Z0822sZ5Go.13.mp4",
+    "video": "SDRZfBB93bM.mp4",
     "qa": [
       {
-        "question": "What is the person doing with the cream puffs?",
-        "answer": "Scraping into a cup",
-        "timestamp": "0.0 -- 5.6056"
+        "question": "What is the current action in CPR?",
+        "answer": "Press the chest",
+        "timestamp": "33.0 -- 44.0"
       },
       {
-        "question": "What is the person doing with the cream puffs?",
-        "answer": "Squeezing onto parchment",
-        "timestamp": "7.5742 -- 23.4234"
+        "question": "What is the current action in CPR?",
+        "answer": "Artificial breathing",
+        "timestamp": "72.0 -- 77.0"
+      }
+    ]
+  },
+  {
+    "video": "11WfYWXFS9M.mp4",
+    "qa": [
+      {
+        "question": "What is the current step in opening a champagne bottle?",
+        "answer": "Tear out the foil",
+        "timestamp": "0.0 -- 1.0"
+      },
+      {
+        "question": "What is the current step in opening a champagne bottle?",
+        "answer": "Turn the suspension link",
+        "timestamp": "8.0 -- 21.0"
+      },
+      {
+        "question": "What is the current step in opening a champagne bottle?",
+        "answer": "Open the bottle carefully",
+        "timestamp": "25.0 -- 32.0"
+      }
+    ]
+  },
+  {
+    "video": "4lc496pF1fo.5.mp4",
+    "qa": [
+      {
+        "question": "What is the man talking about?",
+        "answer": "Desmond is wrong.",
+        "timestamp": "0.0334 -- 1.3347"
+      },
+      {
+        "question": "What is the man talking about?",
+        "answer": "Gasoline prices.",
+        "timestamp": "1.368 -- 9.1425"
+      },
+      {
+        "question": "What is the man talking about?",
+        "answer": "Condemning Floridians.",
+        "timestamp": "9.1758 -- 12.012"
+      }
+    ]
+  },
+  {
+    "video": "_ovNbnjRUNQ.4.mp4",
+    "qa": [
+      {
+        "question": "What is the person doing?",
+        "answer": "Touching a waterfall.",
+        "timestamp": "0.0 -- 2.6693"
+      },
+      {
+        "question": "What is the person doing?",
+        "answer": "Holding a piece of paper.",
+        "timestamp": "9.2759 -- 13.6803"
+      }
+    ]
+  },
+  {
+    "video": "qIzC4Nn-qzA.13.mp4",
+    "qa": [
+      {
+        "question": "What is being displayed on the smartphone screen?",
+        "answer": "Graph",
+        "timestamp": "0.0 -- 2.6693"
+      },
+      {
+        "question": "What is being displayed on the smartphone screen?",
+        "answer": "Many applications",
+        "timestamp": "6.4648 -- 14.306"
+      }
+    ]
+  },
+  {
+    "video": "3EBMpTiWAg8.11.mp4",
+    "qa": [
+      {
+        "question": "What is happening in the room?",
+        "answer": "A person is being restrained.",
+        "timestamp": "0.0 -- 7.5742"
+      },
+      {
+        "question": "What is happening in the room?",
+        "answer": "A man speaks and shakes his head.",
+        "timestamp": "9.9099 -- 12.4791"
+      }
+    ]
+  },
+  {
+    "video": "_Cs2riJ92u8.1.mp4",
+    "qa": [
+      {
+        "question": "What is the man holding in the first scene?",
+        "answer": "Two ducks",
+        "timestamp": "0.0 -- 14.1333"
+      },
+      {
+        "question": "What is the man holding in the first scene?",
+        "answer": "Camera",
+        "timestamp": "14.1667 -- 30.0333"
+      }
+    ]
+  },
+  {
+    "video": "etUgUgqxcEg.53.mp4",
+    "qa": [
+      {
+        "question": "What is the person doing?",
+        "answer": "Holding a skull.",
+        "timestamp": "0.0 -- 3.1031"
+      },
+      {
+        "question": "What is the person doing?",
+        "answer": "Working with a microscope.",
+        "timestamp": "3.1365 -- 9.5429"
+      },
+      {
+        "question": "What is the person doing?",
+        "answer": "Hugging and smiling at the camera.",
+        "timestamp": "11.7451 -- 16.8502"
+      }
+    ]
+  },
+  {
+    "video": "NBIQ96Ss9zc.6.mp4",
+    "qa": [
+      {
+        "question": "What is the flag?",
+        "answer": "American flag",
+        "timestamp": "0.0 -- 2.8028"
+      },
+      {
+        "question": "What is the flag?",
+        "answer": "European Union' flag",
+        "timestamp": "6.6066 -- 11.5782"
+      }
+    ]
+  },
+  {
+    "video": "6vh3mfBZcn4.55.mp4",
+    "qa": [
+      {
+        "question": "What happens to the statue in the scene?",
+        "answer": "Destroyed",
+        "timestamp": "1.8018 -- 3.1365"
+      },
+      {
+        "question": "What happens to the statue in the scene?",
+        "answer": "Standing",
+        "timestamp": "10.0767 -- 11.9453"
+      }
+    ]
+  },
+  {
+    "video": "eTYmMCc_qaI.26.mp4",
+    "qa": [
+      {
+        "question": "What can you find in the video? door or window?",
+        "answer": "Door",
+        "timestamp": "9.84 -- 13.52"
+      },
+      {
+        "question": "What can you find in the video? door or window?",
+        "answer": "Window",
+        "timestamp": "13.56 -- 15.32"
+      }
+    ]
+  },
+  {
+    "video": "G7TM9KOaim8.15.mp4",
+    "qa": [
+      {
+        "question": "What is the torque of the car mentioned by the speaker?",
+        "answer": "384",
+        "timestamp": "0.0 -- 12.3333"
+      },
+      {
+        "question": "What is the torque of the car mentioned by the speaker?",
+        "answer": "627",
+        "timestamp": "12.3667 -- 14.6333"
+      }
+    ]
+  },
+  {
+    "video": "0yFMF1sSb2E.9.mp4",
+    "qa": [
+      {
+        "question": "What is the man holding?",
+        "answer": "blower",
+        "timestamp": "0.0 -- 3.3033"
+      },
+      {
+        "question": "What is the man holding?",
+        "answer": "PVC sheeting",
+        "timestamp": "3.3367 -- 8.7421"
+      }
+    ]
+  },
+  {
+    "video": "bTMVVjv5zQ0.2.mp4",
+    "qa": [
+      {
+        "question": "What is the relation between the bear and the man?",
+        "answer": "A bear sniffing a man on the ground.",
+        "timestamp": "2.0854 -- 3.7537"
+      },
+      {
+        "question": "What is the relation between the bear and the man?",
+        "answer": "A man holding a gun to a bear.",
+        "timestamp": "5.7557 -- 7.2155"
       }
     ]
   }

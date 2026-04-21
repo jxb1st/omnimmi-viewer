@@ -1,37 +1,193 @@
 [
   {
-    "video": "movie101_14.mp4",
+    "video": "needle_75.mp4",
     "conversation": [
       {
-        "human": "What is the setting of the video clip?",
-        "assistant": "City"
+        "human": "What are the two young women doing on the bench in the street?",
+        "assistant": "Communicating"
       },
       {
-        "human": "What is the weather like in the city scene of the video?",
-        "assistant": "Sunny"
+        "human": "What are the two young women wearing while sitting on the bench?",
+        "assistant": "Trendy summer clothes"
       },
       {
-        "human": "The video shows a bustling city under perfectly sunny weather."
+        "human": "What is the mood of the two young women as they sit on the bench?",
+        "assistant": "Positive"
+      },
+      {
+        "human": "Oh well, it is what it is. No point in overthinking it."
       }
     ]
   },
   {
-    "video": "en_tv_11.mp4",
+    "video": "ego_37.mp4",
     "conversation": [
       {
-        "human": "Why does the woman in leather clothing want to attract attention?",
-        "assistant": "To help another woman sneak into the house."
+        "human": "Where did I put the cornflakes packet?",
+        "assistant": "On the store shelf."
       },
       {
-        "human": "Why does the woman in blue clothing want to enter the house?",
-        "assistant": "To operate the computer device in the house."
+        "human": "Where was the red basket?",
+        "assistant": "Near the door."
       },
       {
-        "human": "Why are the woman in blue clothing and the man with a scar on his face surrounded by armed personnel?",
-        "assistant": "Because they triggered the alarm device."
+        "human": "I remember putting the cornflakes on the shelf and the red basket near the door."
+      }
+    ]
+  },
+  {
+    "video": "needle_53.mp4",
+    "conversation": [
+      {
+        "human": "What can be found at the Remembrance War Memorial in Toronto, Canada?",
+        "assistant": "Thousands of Canadian flags."
+      },
+      {
+        "human": "Why is the Remembrance War Memorial in Toronto significant?",
+        "assistant": "It is surrounded by thousands of Canadian flags, symbolizing remembrance and national pride."
       },
       {
         "human": "I guess we'll see how it goes, but I'm not too worried about it at the moment."
+      }
+    ]
+  },
+  {
+    "video": "ego_38.mp4",
+    "conversation": [
+      {
+        "human": "What did I put in the black bin?",
+        "assistant": "Plastic"
+      },
+      {
+        "human": "Where did I put the plastic?",
+        "assistant": "In the black bin"
+      },
+      {
+        "human": "I remember putting the plastic in the black bin earlier to stay organized."
+      }
+    ]
+  },
+  {
+    "video": "needle_54.mp4",
+    "conversation": [
+      {
+        "human": "Where is the mature businesswoman working on the corporate strategy?",
+        "assistant": "In the office."
+      },
+      {
+        "human": "What is the mature businesswoman holding while working on the corporate strategy?",
+        "assistant": "A marker."
+      },
+      {
+        "human": "What is she writing on the whiteboard?",
+        "assistant": "Notes."
+      },
+      {
+        "human": "The businesswoman is developing corporate strategy notes on the office whiteboard."
+      }
+    ]
+  },
+  {
+    "video": "haimian_6.mp4",
+    "conversation": [
+      {
+        "human": "What are the cartoon starfish and cartoon sponge doing in the room?",
+        "assistant": "Watching TV"
+      },
+      {
+        "human": "What are the cartoon octopus and cartoon sponge doing together later?",
+        "assistant": "Running a restaurant"
+      },
+      {
+        "human": "What does the red cartoon character give to the cartoon character in yellow clothes?",
+        "assistant": "A ring"
+      },
+      {
+        "human": "What color does the cartoon starfish change the boat into?",
+        "assistant": "Black"
+      },
+      {
+        "human": "It's amusing to imagine the cartoon starfish and sponge watching TV, while later the octopus and sponge team up to run a restaurant, and the red character gives a ring to the one in yellow, with a starfish changing a boat unexpectedly."
+      }
+    ]
+  },
+  {
+    "video": "needle_146.mp4",
+    "conversation": [
+      {
+        "human": "Who are using the face bow in the video segment?",
+        "assistant": "The dentist and his assistant"
+      },
+      {
+        "human": "What tool are the dentist and his assistant using while treating the patient\u2019s teeth in the video?",
+        "assistant": "Face bow"
+      },
+      {
+        "human": "In the video, the dentist and assistant are carefully using a face bow to treat the patient's teeth."
+      }
+    ]
+  },
+  {
+    "video": "ego_63.mp4",
+    "conversation": [
+      {
+        "human": "Did I leave the room door open?",
+        "assistant": "Yes"
+      },
+      {
+        "human": "Did I throw the papers in the trash bin?",
+        "assistant": "Yes"
+      },
+      {
+        "human": "What did I throw in the trash bin?",
+        "assistant": "Scrap paper manuals"
+      },
+      {
+        "human": "Where did I put the trashcan?",
+        "assistant": "In the truck"
+      },
+      {
+        "human": "Did I cut down the wood strip?",
+        "assistant": "Yes"
+      },
+      {
+        "human": "Where did I keep the wood base panel?",
+        "assistant": "In the room"
+      },
+      {
+        "human": "Where did I put the wooden rack?",
+        "assistant": "Inside the storeroom"
+      },
+      {
+        "human": "Did I leave the storeroom door open?",
+        "assistant": "No"
+      },
+      {
+        "human": "Where was the polishing machine?",
+        "assistant": "In the box"
+      },
+      {
+        "human": "Where was the fevicol?",
+        "assistant": "In the room"
+      },
+      {
+        "human": "Where did I put the white bucket?",
+        "assistant": "In the room"
+      },
+      {
+        "human": "What did I put in the cabinet?",
+        "assistant": "White box"
+      },
+      {
+        "human": "Where was the cabinet after I removed it?",
+        "assistant": "In the cupboard"
+      },
+      {
+        "human": "Where was the empty paint bucket before I kept it inside the storeroom?",
+        "assistant": "Outside the house"
+      },
+      {
+        "human": "You get the idea."
       }
     ]
   }

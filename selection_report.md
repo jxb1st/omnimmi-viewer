@@ -1,17 +1,76 @@
 # OmniMMI selection report
 
-Total samples: **12**
-Total files referenced: **16**
+Total samples: **71**
+Total files referenced: **110**
 
-- action_prediction: item[68] video=8e1655e6-70dd-4280-943c-5d892867495e_548.mp4 dur=8.5s refs=1 (task median=8.5s)
-- action_prediction: item[79] video=690f58f1-f18c-4415-bab0-787c2f83d051_473.mp4 dur=8.5s refs=1 (task median=8.5s)
-- dynamic_state_grounding: item[138] video=Kd3vC0lL9C4.57.mp4 dur=18.4s refs=2 (task median=18.4s)
-- dynamic_state_grounding: item[257] video=8Z0822sZ5Go.13.mp4 dur=18.3s refs=2 (task median=18.4s)
-- multiturn_dependency_reasoning: item[153] video=gOATE_0D-48.2.mp4 dur=36.6s refs=3 (task median=36.6s)
-- multiturn_dependency_reasoning: item[55] video=fP8zX6UKsRA.mp4 dur=36.5s refs=2 (task median=36.6s)
-- proactive_alerting: item[0] video=x4kKIm8WWOA_360.0_510.0.mp4 dur=150.0s refs=1 (task median=150.0s)
-- proactive_alerting: item[1] video=G7oh5A7gGpQ_210.0_360.0.mp4 dur=150.0s refs=1 (task median=150.0s)
-- proactive_turntaking: item[79] video=movie101_14.mp4 dur=465.0s refs=1 (task median=465.0s)
-- proactive_turntaking: item[155] video=en_tv_11.mp4 dur=465.0s refs=1 (task median=465.0s)
-- speaker_identification: item[49] video=OpUD3kNKhBc.mp4 dur=259.3s refs=1 (task median=259.3s)
-- speaker_identification: item[46] video=nfN3oehcInI.mp4 dur=249.3s refs=1 (task median=259.3s)
+- action_prediction: item[20] video=79f47a60-f1e9-4232-88b8-a1836e7dfd30_89.mp4 dur=1.6s refs=1
+- action_prediction: item[124] video=c850f043-d449-4976-b483-aa49c15e3554_688.mp4 dur=2.1s refs=1
+- action_prediction: item[4] video=db63576c-eacf-4ee0-a9a3-e4b671a833e6_565.mp4 dur=2.2s refs=1
+- action_prediction: item[13] video=6745e6c6-27d3-433e-85f9-ecebbc991868_746.mp4 dur=2.2s refs=1
+- action_prediction: item[143] video=efd894dd-968a-494e-9b49-7001f71b1fbd_839.mp4 dur=2.8s refs=1
+- action_prediction: item[16] video=99a250b0-a3bd-45de-9fb6-6f9a418dce1a_59.mp4 dur=4.0s refs=1
+- action_prediction: item[9] video=b785626b-2e72-4ee4-84de-16db332ecac6_752.mp4 dur=5.8s refs=1
+- action_prediction: item[131] video=a0b24dc7-12d4-49ee-b3a3-4192a26ebdfd_593.mp4 dur=7.5s refs=1
+- action_prediction: item[61] video=1d920f78-73d0-4323-b8b1-be51d27a69a7_303.mp4 dur=8.5s refs=1
+- action_prediction: item[71] video=bf6e4f01-7891-42fe-9b52-1b5033379b44_680.mp4 dur=10.0s refs=1
+- action_prediction: item[146] video=e3ee60f1-5a34-4682-9ebb-ffbf1ea20758_376.mp4 dur=13.9s refs=1
+- action_prediction: item[134] video=7f4225ed-a076-4530-91cf-f3903c5d7637_191.mp4 dur=17.9s refs=1
+- action_prediction: item[19] video=ed8d28d1-5d1e-4370-a946-9c39fe5c679b_131.mp4 dur=23.5s refs=1
+- action_prediction: item[140] video=211b46a3-4d20-4896-82ed-d56f41d90ab3_180.mp4 dur=34.3s refs=1
+- action_prediction: item[135] video=ac08c5ee-c104-4de3-bb1c-86b76e675e21_780.mp4 dur=49.7s refs=1
+- dynamic_state_grounding: item[288] video=0yFMF1sSb2E.9.mp4 dur=7.7s refs=2
+- dynamic_state_grounding: item[294] video=bTMVVjv5zQ0.2.mp4 dur=9.4s refs=2
+- dynamic_state_grounding: item[237] video=NBIQ96Ss9zc.6.mp4 dur=10.5s refs=2
+- dynamic_state_grounding: item[171] video=qIzC4Nn-qzA.13.mp4 dur=11.8s refs=2
+- dynamic_state_grounding: item[154] video=_ovNbnjRUNQ.4.mp4 dur=12.8s refs=2
+- dynamic_state_grounding: item[242] video=6vh3mfBZcn4.55.mp4 dur=13.5s refs=2
+- dynamic_state_grounding: item[189] video=3EBMpTiWAg8.11.mp4 dur=15.0s refs=2
+- dynamic_state_grounding: item[103] video=4lc496pF1fo.5.mp4 dur=16.6s refs=3
+- dynamic_state_grounding: item[277] video=G7TM9KOaim8.15.mp4 dur=19.7s refs=2
+- dynamic_state_grounding: item[232] video=etUgUgqxcEg.53.mp4 dur=22.3s refs=3
+- dynamic_state_grounding: item[246] video=eTYmMCc_qaI.26.mp4 dur=26.1s refs=2
+- dynamic_state_grounding: item[221] video=_Cs2riJ92u8.1.mp4 dur=29.2s refs=2
+- dynamic_state_grounding: item[46] video=11WfYWXFS9M.mp4 dur=43.5s refs=3
+- dynamic_state_grounding: item[41] video=SDRZfBB93bM.mp4 dur=92.7s refs=2
+- dynamic_state_grounding: item[29] video=76HTCZmJb7I.mp4 dur=168.5s refs=2
+- multiturn_dependency_reasoning: item[258] video=rIhzyR-wjDM.16.mp4 dur=6.2s refs=2
+- multiturn_dependency_reasoning: item[286] video=IzCoEaGL8Gs.2.mp4 dur=9.7s refs=3
+- multiturn_dependency_reasoning: item[240] video=4ZppEwEzpcU.5.mp4 dur=13.6s refs=3
+- multiturn_dependency_reasoning: item[261] video=4Q1s2y0cE8o.55.mp4 dur=16.0s refs=3
+- multiturn_dependency_reasoning: item[250] video=P4vyy1hvQ2U.10.mp4 dur=19.8s refs=3
+- multiturn_dependency_reasoning: item[264] video=HXtpWYWdsiY.3.mp4 dur=24.0s refs=2
+- multiturn_dependency_reasoning: item[168] video=PbXgf2fzjDo.7.mp4 dur=27.8s refs=3
+- multiturn_dependency_reasoning: item[255] video=RE2XqeZMIsM.7.mp4 dur=35.3s refs=3
+- multiturn_dependency_reasoning: item[3] video=4q7uW0w3ZRc.mp4 dur=45.0s refs=2
+- multiturn_dependency_reasoning: item[94] video=_2N1hAfuOBI.mp4 dur=70.1s refs=3
+- multiturn_dependency_reasoning: item[122] video=grp-b93ab731-52c3-43b2-9d99-4229663ba67c.mp4 dur=114.8s refs=3
+- multiturn_dependency_reasoning: item[0] video=jGM8EImhpXg.mp4 dur=146.0s refs=3
+- multiturn_dependency_reasoning: item[80] video=i6DHD6IRHhM.mp4 dur=176.0s refs=3
+- multiturn_dependency_reasoning: item[130] video=26b4e1c1-54c7-419f-b2d3-63ea52fd3540.mp4 dur=220.0s refs=3
+- multiturn_dependency_reasoning: item[17] video=bZJZsfLKIRc.mp4 dur=282.0s refs=2
+- proactive_alerting: item[2] video=EwItjBAwCbQ_60.0_210.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[4] video=Iu7nF2VLF3c_60.0_210.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[5] video=Ehpo8gXg27I_660.0_810.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[8] video=FL0Cos34RjU_210.0_360.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[10] video=00DH3yn5C30_210.0_360.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[13] video=KDpsbJHx1RI_360.0_510.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[14] video=xUb7T-C0Yt4_360.0_510.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[16] video=cpkXphR7tVo_60.0_210.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[17] video=mbdj8xfSIKo_60.0_210.0.mp4 dur=150.0s refs=1
+- proactive_alerting: item[20] video=j9NNAmqweOA_360.0_510.0.mp4 dur=150.0s refs=1
+- proactive_turntaking: item[133] video=haimian_6.mp4 dur=324.0s refs=1
+- proactive_turntaking: item[174] video=needle_146.mp4 dur=399.4s refs=1
+- proactive_turntaking: item[185] video=ego_63.mp4 dur=447.0s refs=1
+- proactive_turntaking: item[28] video=needle_53.mp4 dur=461.0s refs=1
+- proactive_turntaking: item[119] video=needle_54.mp4 dur=469.7s refs=1
+- proactive_turntaking: item[7] video=ego_37.mp4 dur=480.0s refs=1
+- proactive_turntaking: item[86] video=ego_38.mp4 dur=480.0s refs=1
+- proactive_turntaking: item[3] video=needle_75.mp4 dur=505.0s refs=1
+- speaker_identification: item[0] video=2TxVyxrOp0s.mp4 dur=81.9s refs=1
+- speaker_identification: item[80] video=qAppJTZC0zk.mp4 dur=112.0s refs=1
+- speaker_identification: item[118] video=u-AUW72Rs1o.mp4 dur=147.2s refs=1
+- speaker_identification: item[2] video=rfu7-_K_k4w.mp4 dur=230.5s refs=1
+- speaker_identification: item[151] video=iLS_YP1uEK8.mp4 dur=305.7s refs=1
+- speaker_identification: item[33] video=8eVXTyIZ1Hs.mp4 dur=382.1s refs=1
+- speaker_identification: item[8] video=wIUcc8g17wg.mp4 dur=413.0s refs=1
+- speaker_identification: item[28] video=AAgD4dbbSfA.mp4 dur=531.2s refs=1

@@ -1,18 +1,82 @@
 [
   {
-    "video": "x4kKIm8WWOA_360.0_510.0.mp4",
-    "question": "Signal me when the video shows the woman in a black coat grooming a horse.",
+    "video": "EwItjBAwCbQ_60.0_210.0.mp4",
+    "question": "Notify me when the man in a gray top is walking around a garden in the video.",
     "answer": [
-      124,
-      150
+      6,
+      36
     ]
   },
   {
-    "video": "G7oh5A7gGpQ_210.0_360.0.mp4",
-    "question": "Identify the moment in the video when a woman is browsing a makeup selection arranged in wooden crates, indicated by her comments about items being hers and mentioning moisturizer.",
+    "video": "Iu7nF2VLF3c_60.0_210.0.mp4",
+    "question": "Remind me of the moment when two girls are checking out spicy and sweet tamarind in a store, as they mention it looks good and they decide to try it, while being in L.A.",
     "answer": [
-      38,
-      62
+      104,
+      126
+    ]
+  },
+  {
+    "video": "Ehpo8gXg27I_660.0_810.0.mp4",
+    "question": "Show the part where two men in matching blue sweatshirts eat McDonalds and walk together afterwards.",
+    "answer": [
+      70,
+      88
+    ]
+  },
+  {
+    "video": "FL0Cos34RjU_210.0_360.0.mp4",
+    "question": "Identify the time when a man wearing a mask is shown outside of a business.",
+    "answer": [
+      134,
+      148
+    ]
+  },
+  {
+    "video": "00DH3yn5C30_210.0_360.0.mp4",
+    "question": "Remind me when the video shows someone making a gift package while sitting at a table.",
+    "answer": [
+      96,
+      126
+    ]
+  },
+  {
+    "video": "KDpsbJHx1RI_360.0_510.0.mp4",
+    "question": "Notify me when the video demonstrates the file explorer showing the games tab.",
+    "answer": [
+      2,
+      16
+    ]
+  },
+  {
+    "video": "xUb7T-C0Yt4_360.0_510.0.mp4",
+    "question": "Describe the scene where the blonde woman is traveling in a canoe and talking about sunblock issues.",
+    "answer": [
+      74,
+      104
+    ]
+  },
+  {
+    "video": "cpkXphR7tVo_60.0_210.0.mp4",
+    "question": "Find the moment in the video where a young woman is in her kitchen and starts preparing grapefruit water.",
+    "answer": [
+      20,
+      46
+    ]
+  },
+  {
+    "video": "mbdj8xfSIKo_60.0_210.0.mp4",
+    "question": "Tell me about the video visualizing the view from the desert from a bus window.",
+    "answer": [
+      74,
+      100
+    ]
+  },
+  {
+    "video": "j9NNAmqweOA_360.0_510.0.mp4",
+    "question": "Update me when a person in a dark top uses a henna pen to draw an intricate pattern on the back of their left hand fingers in a sped-up video.",
+    "answer": [
+      10,
+      24
     ]
   }
 ]
