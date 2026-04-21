@@ -1,18 +1,18 @@
 [
   {
-    "video": "rrTIeJRVGjg_360.0_510.0.mp4",
-    "question": "Inform me when the video shows the credits rolling.",
+    "video": "x4kKIm8WWOA_360.0_510.0.mp4",
+    "question": "Signal me when the video shows the woman in a black coat grooming a horse.",
     "answer": [
-      112,
-      134
+      124,
+      150
     ]
   },
   {
-    "video": "eBFyZ-JI_1s_210.0_360.0.mp4",
-    "question": "Inform me when the video shows a woman looking out at a large body of water.",
+    "video": "G7oh5A7gGpQ_210.0_360.0.mp4",
+    "question": "Identify the moment in the video when a woman is browsing a makeup selection arranged in wooden crates, indicated by her comments about items being hers and mentioning moisturizer.",
     "answer": [
-      28,
-      52
+      38,
+      62
     ]
   }
 ]

@@ -1,36 +1,26 @@
 [
   {
-    "video": "51fc62f8-00f4-44e3-af9c-7ebb63da6c3d_378.mp4",
-    "question": "Given my responsibility to Prepare the fruit and plate, the video shows the progress, Can you provide an alternative solution for the next task?",
-    "answer": "put fruit on cutting board",
+    "video": "8e1655e6-70dd-4280-943c-5d892867495e_548.mp4",
+    "question": "My obligation is to Dry and put away cup and cloth. The task's progress is captured in the video, what do you suggest as my next move?",
+    "answer": "hang cloth",
     "vocab": [
-      "put fruit on cutting board",
-      "close cabinet",
-      "open cabinet",
-      "put knife on cutting board"
+      "dry cup",
+      "place bowl in cup",
+      "pick up cup",
+      "put cup on sink",
+      "hang cloth"
     ]
   },
   {
-    "video": "grp-93d50e4c-0a3b-430a-8267-01fbe5f302f4_1.mp4",
-    "question": "My role involves preparing vegetable sauce, and the video highlights the task's progress, How does what I should do next align with my goals?",
-    "answer": "pours milk in jug",
+    "video": "690f58f1-f18c-4415-bab0-787c2f83d051_473.mp4",
+    "question": "I am performing Stir the rice in the rice cooker, and the video displays the progress made, How does what I'm doing now lead to what I should do next?",
+    "answer": "stir rice with serving spoon",
     "vocab": [
-      "pours milk in jug",
-      "mix ingredients with mixer whisk",
-      "chops sausage with knife",
-      "cuts tofu with knife",
-      "prepares vegetable sauce in pan",
-      "prepares cabbage on chopping board",
-      "stores cabbage in fridge",
-      "adds ingredients in bowl",
-      "heats oil in pan",
-      "stores beans seed in fridge",
-      "gathers ingredients on countertop",
-      "remove fillet from pack",
-      "stores flour in fridge",
-      "remove ginger from fridge",
-      "pours tofu in bowl",
-      "stores meat in fridge"
+      "hold serving spoon in rice cooker",
+      "leave serving spoon",
+      "stir rice with serving spoon",
+      "move rice cooker",
+      "stir rice"
     ]
   }
 ]
