@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OmniMMI Dataset Viewer</title>
+<style>
+:root {
+  --bg: #0f1419;
+  --panel: #1a2129;
+  --border: #2d3640;
+  --text: #e6e9ed;
+  --muted: #8a949e;
+  --accent: #4dabf7;
+  --good: #51cf66;
+  --bad: #ff6b6b;
+  --highlight: #ffd43b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+header {
+  padding: 12px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.control { display: flex; align-items: center; gap: 6px; }
+.control label { color: var(--muted); font-size: 12px; }
+select, input, button {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  font-family: inherit;
+  font-size: 13px;
+  border-radius: 4px;
+}
+button { cursor: pointer; }
+button:hover:not(:disabled) { background: var(--border); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+input[type=number] { width: 80px; }
+.banner {
+  background: rgba(77, 171, 247, 0.08);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 20px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.banner strong { color: var(--text); }
+.banner a { color: var(--accent); text-decoration: none; }
+.banner a:hover { text-decoration: underline; }
+.back-link { font-weight: 500; }
+.video-missing {
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 16px;
+  padding: 16px;
+  max-width: 100%;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow: hidden;
+}
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.field {
+  margin-bottom: 12px;
+}
+.field-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.field-value {
+  font-size: 14px;
+  word-break: break-word;
+}
+.field-value.code {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  background: var(--bg);
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+video {
+  width: 100%;
+  max-height: 540px;
+  background: #000;
+  border-radius: 4px;
+}
+.video-placeholder {
+  width: 100%;
+  min-height: 240px;
+  background: #000;
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--bad);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+  gap: 8px;
+}
+.task-content {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+.task-content h2 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+.task-content h2:not(:first-child) {
+  margin-top: 24px;
+}
+.vocab-list { list-style: none; padding: 0; margin: 0; }
+.vocab-list li {
+  padding: 10px 14px;
+  margin: 4px 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+}
+.vocab-list li.correct {
+  background: rgba(81, 207, 102, 0.12);
+  border-color: var(--good);
+  color: var(--good);
+  font-weight: 600;
+}
+.qa-turn {
+  margin-bottom: 8px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 13px;
+}
+.qa-turn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+  background: rgba(77, 171, 247, 0.08);
+}
+.qa-turn .qa-meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.qa-turn .qa-q { margin-bottom: 4px; }
+.qa-turn .qa-a { color: var(--good); }
+.chat-bubble {
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-radius: 14px;
+  max-width: 85%;
+  font-size: 14px;
+}
+.chat-bubble.human {
+  background: rgba(77, 171, 247, 0.12);
+  border: 1px solid rgba(77, 171, 247, 0.4);
+  margin-left: 0;
+  margin-right: auto;
+}
+.chat-bubble.assistant {
+  background: rgba(81, 207, 102, 0.1);
+  border: 1px solid rgba(81, 207, 102, 0.3);
+  margin-left: auto;
+  margin-right: 0;
+}
+.chat-bubble.noise {
+  background: rgba(255, 212, 59, 0.12);
+  border: 2px solid var(--highlight);
+}
+.chat-bubble.noise .noise-label {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 212, 59, 0.4);
+  font-size: 11px;
+  color: var(--highlight);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.chat-role {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.timeline-wrap { margin: 16px 0 4px; }
+.timeline {
+  position: relative;
+  height: 28px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.timeline-fill {
+  position: absolute;
+  top: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(255, 212, 59, 0.7), rgba(81, 207, 102, 0.7));
+  border-left: 2px solid var(--highlight);
+  border-right: 2px solid var(--good);
+}
+.timeline-label {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.note {
+  margin: 8px 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+.error-msg {
+  background: rgba(255, 107, 107, 0.12);
+  border: 1px solid var(--bad);
+  color: var(--bad);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.error-msg code {
+  background: rgba(255, 107, 107, 0.15);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+.task-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+.kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  font-family: monospace;
+  font-size: 11px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+}
+.stats-panel {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+.stats-panel h2 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.stats-summary {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+.stats-summary b {
+  color: var(--text);
+  font-weight: 600;
+  margin-left: 3px;
+}
+.histogram {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hist-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+.hist-label {
+  color: var(--muted);
+  text-align: right;
+}
+.hist-bar-wrap {
+  height: 18px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hist-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #74c0fc);
+  min-width: 0;
+  transition: width 0.25s ease;
+}
+.hist-count { color: var(--text); }
+.hist-count .hist-pct { color: var(--muted); font-size: 11px; margin-left: 4px; }
+.hist-row.current .hist-label { color: var(--highlight); }
+.hist-row.current .hist-bar { background: linear-gradient(90deg, var(--highlight), #ffe066); }
+.instruction-panel {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+.instruction-panel h2 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.instruction-panel h2 code {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--bg);
+  padding: 1px 6px;
+  border-radius: 3px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.prompt-block {
+  margin-top: 14px;
+}
+.prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.prompt-label {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.prompt-stats {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+.prompt-stats b {
+  color: var(--text);
+  font-weight: 600;
+  margin: 0 2px;
+}
+.prompt-text {
+  margin: 0;
+  padding: 12px 14px;
+  background: #0a0d11;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+  max-height: 460px;
+  overflow-y: auto;
+}
+.prompt-text .esc {
+  color: var(--muted);
+  background: rgba(138, 148, 158, 0.12);
+  padding: 0 3px;
+  border-radius: 2px;
+  font-size: 10px;
+  margin: 0 1px;
+}
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.toggle-switch input[type=checkbox] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+.toggle-switch label {
+  cursor: pointer;
+  user-select: none;
+}
+</style>
+</head>
+<body>
+<div class="banner" id="banner">
+  <a href="https://jxb1st.github.io/datasets/" class="back-link">&larr; Dataset panel</a>
+  <span>Showing a <strong>12-sample</strong> representative subset (2 per task). Full benchmark: 600+ samples — see
+    <a href="https://github.com/OmniMMI/OmniMMI" target="_blank">OmniMMI</a>.
+  </span>
+</div>
+<header>
+  <h1>OmniMMI Viewer</h1>
+  <div class="control">
+    <label>Task</label>
+    <select id="task-select"></select>
+  </div>
+  <div class="control">
+    <label>Sample</label>
+    <input type="number" id="sample-input" min="0" value="0">
+    <span id="sample-counter" style="color:var(--muted);font-size:12px;">/ 0</span>
+  </div>
+  <div class="control">
+    <button id="prev-btn">&larr; Prev</button>
+    <button id="next-btn">Next &rarr;</button>
+  </div>
+  <div class="control" id="turn-control" style="display:none;">
+    <label>QA Turn</label>
+    <select id="turn-select"></select>
+  </div>
+  <div class="control toggle-switch">
+    <input type="checkbox" id="instr-toggle">
+    <label for="instr-toggle">Show Generated Instruction</label>
+  </div>
+  <div style="margin-left:auto;color:var(--muted);font-size:11px;">
+    <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> to navigate
+  </div>
+</header>
+
+<main>
+  <aside class="panel" id="metadata-panel">
+    <h2>Metadata</h2>
+    <div id="metadata-fields"></div>
+  </aside>
+  <section class="panel" id="video-panel">
+    <h2>Video</h2>
+    <div id="video-container"></div>
+  </section>
+  <section class="stats-panel" id="stats-panel"></section>
+  <section class="instruction-panel" id="instruction-panel" style="display:none;"></section>
+  <section class="task-content" id="task-content"></section>
+</main>
+
+<script>
+(function() {
+  "use strict";
+
+  const TASKS = {
+    ap: {
+      file: "omnimmi/action_prediction.json",
+      label: "Action Prediction (AP)",
+      description: "Given the current video and a list of candidate next actions, the model picks the correct one. Tests temporal forecasting from current state.",
+    },
+    sg: {
+      file: "omnimmi/dynamic_state_grounding.json",
+      label: "Dynamic State Grounding (SG)",
+      description: "Each sample has multiple QA turns, each with a clip ending at a specific timestamp. The model identifies the action/state currently happening at each turn.",
+    },
+    md: {
+      file: "omnimmi/multiturn_dependency_reasoning.json",
+      label: "Multi-turn Dependency (MD)",
+      description: "Like SG, but later questions reference earlier answers via the placeholder ##ANSWER##. Tests cross-turn coreference under a streaming constraint.",
+    },
+    pa: {
+      file: "omnimmi/proactive_alerting.json",
+      label: "Proactive Alerting (PA)",
+      description: "The model is given a question (\"signal me when X happens\") and watches the video. It must speak up at a frame falling within the ground-truth time interval. Streaming-only.",
+    },
+    pt: {
+      file: "omnimmi/proactive_turntaking.json",
+      label: "Proactive Turn-taking (PT)",
+      description: "Multi-turn conversation where the last human message is typically a noise/statement (NOT a question). The model is expected to STAY SILENT for the last turn.",
+    },
+    si: {
+      file: "omnimmi/speaker_identification.json",
+      label: "Speaker Identification (SI)",
+      description: "At a specific timestamp, the model identifies the name of the speaker matching a question's description.",
+    },
+  };
+
+  const cache = {};
+  let durations = null;
+  const state = {
+    task: "ap",
+    sampleIdx: 0,
+    turnIdx: 0,
+    showInstruction: localStorage.getItem("omnimmi-show-instr") === "1",
+  };
+
+  const BUCKETS = [
+    { lo: 0,    hi: 5,        label: "0-5s" },
+    { lo: 5,    hi: 10,       label: "5-10s" },
+    { lo: 10,   hi: 30,       label: "10-30s" },
+    { lo: 30,   hi: 60,       label: "30-60s" },
+    { lo: 60,   hi: 180,      label: "1-3m" },
+    { lo: 180,  hi: 600,      label: "3-10m" },
+    { lo: 600,  hi: 1800,     label: "10-30m" },
+    { lo: 1800, hi: Infinity, label: "30m+" },
+  ];
+
+  const $ = id => document.getElementById(id);
+
+  function escape(s) {
+    if (s == null) return "";
+    return String(s).replace(/[&<>"']/g, c => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[c]));
+  }
+
+  function videoPath(video) {
+    return "omnimmi/videos/" + video;
+  }
+  function clipPath(video, timestamp) {
+    const base = video.replace(/\.mp4$/i, "");
+    const end = parseInt(timestamp.split("--")[1].trim(), 10);
+    return "omnimmi/clips/" + base + "_" + end + ".mp4";
+  }
+
+  async function loadTask(key) {
+    if (cache[key]) return cache[key];
+    const res = await fetch(TASKS[key].file);
+    if (!res.ok) throw new Error("Failed to load " + TASKS[key].file + " (HTTP " + res.status + ")");
+    const data = await res.json();
+    cache[key] = data;
+    return data;
+  }
+
+  async function loadDurations() {
+    try {
+      const res = await fetch("file_durations.json");
+      if (res.ok) durations = await res.json();
+    } catch (e) { /* stats panel will render a hint */ }
+  }
+
+  function fmtDuration(s) {
+    if (s == null || !isFinite(s)) return "-";
+    if (s < 60)   return s.toFixed(1) + "s";
+    if (s < 3600) return (s / 60).toFixed(1) + "m";
+    return (s / 3600).toFixed(2) + "h";
+  }
+
+  function getDurationsForTask(key, data) {
+    if (!durations) return null;
+    const durs = [];
+    if (key === "sg" || key === "md") {
+      data.forEach(s => {
+        const base = s.video.replace(/\.mp4$/i, "");
+        s.qa.forEach(qa => {
+          const end = parseInt(qa.timestamp.split("--")[1].trim(), 10);
+          const k = "clips/" + base + "_" + end + ".mp4";
+          if (durations[k] != null) durs.push(durations[k]);
+        });
+      });
+    } else {
+      data.forEach(s => {
+        const k = "videos/" + s.video;
+        if (durations[k] != null) durs.push(durations[k]);
+      });
+    }
+    return durs;
+  }
+
+  function getCurrentDuration(key, sample) {
+    if (!durations) return null;
+    if (key === "sg" || key === "md") {
+      const base = sample.video.replace(/\.mp4$/i, "");
+      const turn = sample.qa[state.turnIdx];
+      if (!turn) return null;
+      const end = parseInt(turn.timestamp.split("--")[1].trim(), 10);
+      return durations["clips/" + base + "_" + end + ".mp4"] ?? null;
+    }
+    return durations["videos/" + sample.video] ?? null;
+  }
+
+  function bucketOf(d) {
+    for (let i = 0; i < BUCKETS.length; i++) {
+      if (d >= BUCKETS[i].lo && d < BUCKETS[i].hi) return i;
+    }
+    return BUCKETS.length - 1;
+  }
+
+  function computeStats(durs) {
+    if (!durs || durs.length === 0) return null;
+    const sorted = durs.slice().sort((a, b) => a - b);
+    const n = sorted.length;
+    const pick = q => sorted[Math.min(n - 1, Math.floor(n * q))];
+    const sum = sorted.reduce((a, b) => a + b, 0);
+    const counts = BUCKETS.map(() => 0);
+    sorted.forEach(d => counts[bucketOf(d)]++);
+    return {
+      n, sum,
+      min: sorted[0],
+      p25: pick(0.25),
+      median: pick(0.5),
+      p75: pick(0.75),
+      p90: pick(0.9),
+      max: sorted[n - 1],
+      mean: sum / n,
+      counts,
+    };
+  }
+
+  // ------- Generated instruction builders (mirrors evaluations/inference_utils.py) -------
+  function pyListRepr(arr) {
+    return "[" + arr.map(s => {
+      if (typeof s !== "string") return String(s);
+      if (s.indexOf("'") !== -1 && s.indexOf('"') === -1) {
+        return '"' + s + '"';
+      }
+      return "'" + s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") + "'";
+    }).join(", ") + "]";
+  }
+
+  // Returns the exact instruction string passed to model.generate(instruction=...)
+  // for the current sample. For SG/MD/PT, mode selects between offline / online paths.
+  function buildInstruction(task, sample, turnIdx, mode) {
+    if (task === "ap") {
+      return sample.question + ", Please select the next step from the provided vocabulary list: " + pyListRepr(sample.vocab) + ".";
+    }
+    if (task === "si" || task === "pa") {
+      return sample.question;
+    }
+    if (task === "md") {
+      const turn = sample.qa[turnIdx];
+      let q = turn.question;
+      if (turnIdx > 0 && q.indexOf("##ANSWER##") !== -1) {
+        q = q.replace(/##ANSWER##/g, sample.qa[turnIdx - 1].answer);
+      }
+      return q;
+    }
+    if (task === "sg") {
+      let prompt = "";
+      for (let i = 0; i <= turnIdx; i++) {
+        const qa = sample.qa[i];
+        prompt += "user\n" + qa.question + "\nassistant\n";
+        if (i < turnIdx) {
+          prompt += qa.answer + "\n";
+        }
+      }
+      return prompt;
+    }
+    if (task === "pt") {
+      const turns = mode === "online"
+        ? sample.conversation
+        : sample.conversation.slice(-2);
+      let prompt = "";
+      turns.forEach(turn => {
+        Object.keys(turn).forEach(k => {
+          prompt += k + "\n" + turn[k] + "\n";
+        });
+      });
+      return prompt;
+    }
+    return "";
+  }
+
+  function approxTokens(s) {
+    const trimmed = s.trim();
+    return {
+      chars: s.length,
+      words: trimmed ? trimmed.split(/\s+/).length : 0,
+      bpe: Math.ceil(s.length / 4),
+      lines: s.split("\n").length,
+    };
+  }
+
+  function escapeWithNewlineMarkers(s) {
+    // Escape HTML then mark \n boundaries subtly so whitespace is visible
+    return escape(s).replace(/\n/g, '<span class="esc">\\n</span>\n');
+  }
+
+  function renderPromptBlock(label, text) {
+    const t = approxTokens(text);
+    return '<div class="prompt-block">' +
+      '<div class="prompt-header">' +
+      '<div class="prompt-label">' + escape(label) + '</div>' +
+      '<div class="prompt-stats">' +
+      'chars<b>' + t.chars + '</b>&middot; ' +
+      'words<b>' + t.words + '</b>&middot; ' +
+      '~BPE<b>' + t.bpe + '</b>&middot; ' +
+      'lines<b>' + t.lines + '</b>' +
+      '</div>' +
+      '</div>' +
+      '<pre class="prompt-text">' + escapeWithNewlineMarkers(text) + '</pre>' +
+      '</div>';
+  }
+
+  function renderInstruction(task, sample) {
+    const panel = $("instruction-panel");
+    if (!state.showInstruction) {
+      panel.style.display = "none";
+      return;
+    }
+    panel.style.display = "block";
+
+    let html = '<h2>Generated Instruction &middot; fed to <code>model.generate(instruction=...)</code></h2>';
+    html += '<p class="note">Exact text string built by <code>evaluations/inference_utils.py</code>. Visual frames are passed to the model separately; this panel shows only the text side. ';
+    if (task === "sg" || task === "md") {
+      html += 'At real inference, previous-turn answers come from the <b>model\'s own output</b>; here we substitute ground-truth for reproducibility.';
+    }
+    html += '</p>';
+
+    if (task === "pt") {
+      const off = buildInstruction("pt", sample, 0, "offline");
+      const on  = buildInstruction("pt", sample, 0, "online");
+      html += renderPromptBlock(
+        "Offline \u00b7 last 2 turns (inference_utils.py:149-164)",
+        off
+      );
+      html += renderPromptBlock(
+        "Online \u00b7 full conversation (online_inference_utils.py:339-343)",
+        on
+      );
+    } else {
+      const txt = buildInstruction(task, sample, state.turnIdx);
+      let lbl = "Instruction";
+      if (task === "ap") lbl = "AP \u00b7 question + vocab list";
+      else if (task === "si") lbl = "SI \u00b7 bare question";
+      else if (task === "pa") lbl = "PA \u00b7 bare question (trigger window NOT told to model)";
+      else if (task === "md") lbl = "MD \u00b7 turn " + (state.turnIdx + 1) + " / " + sample.qa.length + " \u00b7 ##ANSWER## resolved with prev-turn GT";
+      else if (task === "sg") lbl = "SG \u00b7 accumulated history through turn " + (state.turnIdx + 1) + " / " + sample.qa.length;
+      html += renderPromptBlock(lbl, txt);
+    }
+
+    panel.innerHTML = html;
+  }
+
+  function renderStats(taskKey, taskData, currentDur) {
+    const panel = $("stats-panel");
+    if (!durations) {
+      panel.innerHTML =
+        '<h2>Video Length Stats</h2>' +
+        '<p class="note">file_durations.json not found. Run <code>python compute_durations.py</code> in the repo root to generate it.</p>';
+      return;
+    }
+    const durs = getDurationsForTask(taskKey, taskData);
+    const stats = computeStats(durs);
+    if (!stats) {
+      panel.innerHTML = '<h2>Video Length Stats</h2><p class="note">No duration data available for this task.</p>';
+      return;
+    }
+    const unit = (taskKey === "sg" || taskKey === "md") ? "per-turn clip" : "per-sample video";
+    const maxCount = Math.max.apply(null, stats.counts) || 1;
+    const currentBucket = currentDur != null ? bucketOf(currentDur) : -1;
+
+    let html = '<h2>Video Length Distribution &middot; ' + TASKS[taskKey].label +
+      ' &middot; ' + unit + ' (n=' + stats.n + ')</h2>';
+
+    html += '<div class="stats-summary">' +
+      '<span>min<b>' + fmtDuration(stats.min) + '</b></span>' +
+      '<span>p25<b>' + fmtDuration(stats.p25) + '</b></span>' +
+      '<span>median<b>' + fmtDuration(stats.median) + '</b></span>' +
+      '<span>mean<b>' + fmtDuration(stats.mean) + '</b></span>' +
+      '<span>p75<b>' + fmtDuration(stats.p75) + '</b></span>' +
+      '<span>p90<b>' + fmtDuration(stats.p90) + '</b></span>' +
+      '<span>max<b>' + fmtDuration(stats.max) + '</b></span>' +
+      '<span>total<b>' + fmtDuration(stats.sum) + '</b></span>' +
+      (currentDur != null
+        ? '<span style="color:var(--highlight);">current<b style="color:var(--highlight);">' + fmtDuration(currentDur) + '</b></span>'
+        : "") +
+      '</div>';
+
+    html += '<div class="histogram">';
+    stats.counts.forEach((c, i) => {
+      const wpct = (c / maxCount * 100).toFixed(2);
+      const spct = (c / stats.n * 100).toFixed(1);
+      const hl = (i === currentBucket) ? " current" : "";
+      html += '<div class="hist-row' + hl + '">' +
+        '<div class="hist-label">' + BUCKETS[i].label + '</div>' +
+        '<div class="hist-bar-wrap"><div class="hist-bar" style="width:' + wpct + '%"></div></div>' +
+        '<div class="hist-count">' + c + '<span class="hist-pct">(' + spct + '%)</span></div>' +
+        '</div>';
+    });
+    html += '</div>';
+
+    panel.innerHTML = html;
+  }
+
+  function field(label, value, isCode) {
+    return '<div class="field"><div class="field-label">' + escape(label) +
+      '</div><div class="field-value' + (isCode ? " code" : "") + '">' + value + "</div></div>";
+  }
+
+  function makeVideoElement(src, autoSeek) {
+    const v = document.createElement("video");
+    v.src = src;
+    v.controls = true;
+    v.preload = "metadata";
+    if (autoSeek != null) {
+      v.addEventListener("loadedmetadata", () => {
+        try { v.currentTime = parseFloat(autoSeek); } catch (e) {}
+      });
+    }
+    v.addEventListener("error", () => {
+      const placeholder = document.createElement("div");
+      placeholder.className = "video-missing";
+      placeholder.innerHTML =
+        '<div><b>Video not included in this subset</b></div>' +
+        '<div style="font-family:monospace;font-size:11px;margin-top:6px;">' + escape(src) + '</div>' +
+        '<div style="font-size:11px;margin-top:6px;max-width:380px;">Only 12 representative samples are hosted here to keep the viewer under the GitHub Pages quota.</div>';
+      v.replaceWith(placeholder);
+    });
+    return v;
+  }
+
+  function setVideo(container, src, autoSeek) {
+    container.innerHTML = "";
+    container.appendChild(makeVideoElement(src, autoSeek));
+  }
+
+  function taskDesc(key) {
+    return '<p class="task-desc">' + escape(TASKS[key].description) + "</p>";
+  }
+
+  // ------- Per-task renderers -------
+  function renderAP(sample) {
+    $("metadata-fields").innerHTML =
+      field("Video", escape(sample.video), true) +
+      field("Path", escape(videoPath(sample.video)), true) +
+      field("Question", escape(sample.question)) +
+      field("Correct Answer", '<span style="color:var(--good);font-weight:600;">' + escape(sample.answer) + "</span>");
+    setVideo($("video-container"), videoPath(sample.video));
+
+    const items = sample.vocab.map(v => {
+      const isCorrect = v === sample.answer;
+      return '<li class="' + (isCorrect ? "correct" : "") + '">' + escape(v) +
+        (isCorrect ? '  &#10003; correct' : "") + "</li>";
+    }).join("");
+    $("task-content").innerHTML =
+      taskDesc("ap") +
+      "<h2>Vocabulary (next-action candidates)</h2>" +
+      '<ul class="vocab-list">' + items + "</ul>";
+    hideTurnControl();
+  }
+
+  function renderSG(sample) { renderQATask(sample, false, "sg"); }
+  function renderMD(sample) { renderQATask(sample, true, "md"); }
+
+  function renderQATask(sample, isMD, key) {
+    setupTurnControl(sample.qa.length);
+    const turn = sample.qa[state.turnIdx];
+    const path = clipPath(sample.video, turn.timestamp);
+
+    $("metadata-fields").innerHTML =
+      field("Video (orig)", escape(sample.video), true) +
+      field("Clip Path", escape(path), true) +
+      field("Total Turns", String(sample.qa.length)) +
+      field("Current Turn", (state.turnIdx + 1) + " / " + sample.qa.length) +
+      field("Timestamp", escape(turn.timestamp));
+    setVideo($("video-container"), path);
+
+    let resolvedNote = "";
+    if (isMD && state.turnIdx > 0 && turn.question.indexOf("##ANSWER##") !== -1) {
+      const prevAnswer = sample.qa[state.turnIdx - 1].answer;
+      const resolved = turn.question.replace(/##ANSWER##/g, prevAnswer);
+      resolvedNote = field("Resolved Question (with prev answer)",
+        '<span style="color:var(--accent);">' + escape(resolved) + "</span>");
+    }
+
+    let html = taskDesc(key);
+    html += "<h2>Current QA Turn</h2>";
+    html += field("Question", escape(turn.question));
+    html += resolvedNote;
+    html += field("Ground-truth Answer", '<span style="color:var(--good);font-weight:600;">' + escape(turn.answer) + "</span>");
+    html += "<h2>All Turns</h2>";
+    sample.qa.forEach((qa, i) => {
+      let q = qa.question;
+      if (isMD && i > 0 && q.indexOf("##ANSWER##") !== -1) {
+        q = q.replace(/##ANSWER##/g, sample.qa[i - 1].answer);
+      }
+      html += '<div class="qa-turn ' + (i === state.turnIdx ? "active" : "") + '">' +
+        '<div class="qa-meta">Turn ' + (i + 1) + ' &middot; ' + escape(qa.timestamp) + ' s</div>' +
+        '<div class="qa-q"><b>Q:</b> ' + escape(q) + "</div>" +
+        '<div class="qa-a"><b>A:</b> ' + escape(qa.answer) + "</div>" +
+        "</div>";
+    });
+    $("task-content").innerHTML = html;
+  }
+
+  function renderPA(sample) {
+    const s = sample.answer[0];
+    const e = sample.answer[1];
+    $("metadata-fields").innerHTML =
+      field("Video", escape(sample.video), true) +
+      field("Path", escape(videoPath(sample.video)), true) +
+      field("Trigger Range", "[" + s + ", " + e + "] seconds") +
+      field("Question", escape(sample.question));
+    setVideo($("video-container"), videoPath(sample.video), s);
+
+    $("task-content").innerHTML =
+      taskDesc("pa") +
+      "<h2>Trigger Window on Timeline</h2>" +
+      '<div class="timeline-wrap">' +
+      '<div class="timeline"><div class="timeline-fill" id="pa-fill" style="left:0%;width:0%;"></div></div>' +
+      '<div class="timeline-label"><span>0 s</span><span id="pa-end-label">video end</span></div>' +
+      '</div>' +
+      '<p class="note">Yellow-to-green band marks the ground-truth interval [' + s + ', ' + e + '] seconds. The model is correct if it speaks up while playback is inside this band.</p>';
+
+    const v = $("video-container").querySelector("video");
+    if (v) {
+      v.addEventListener("loadedmetadata", () => {
+        const dur = v.duration && isFinite(v.duration) ? v.duration : Math.max(e * 1.2, 10);
+        const fill = $("pa-fill");
+        if (fill) {
+          fill.style.left = ((s / dur) * 100).toFixed(2) + "%";
+          fill.style.width = (((e - s) / dur) * 100).toFixed(2) + "%";
+        }
+        const lbl = $("pa-end-label");
+        if (lbl) lbl.textContent = dur.toFixed(1) + " s";
+      });
+    }
+    hideTurnControl();
+  }
+
+  function renderPT(sample) {
+    $("metadata-fields").innerHTML =
+      field("Video", escape(sample.video), true) +
+      field("Path", escape(videoPath(sample.video)), true) +
+      field("Conversation Turns", String(sample.conversation.length));
+    setVideo($("video-container"), videoPath(sample.video));
+
+    let html = taskDesc("pt");
+    html += "<h2>Conversation</h2>";
+    sample.conversation.forEach((turn, i) => {
+      const isLast = i === sample.conversation.length - 1;
+      const isNoise = isLast && !turn.assistant;
+      if (turn.human != null) {
+        html += '<div class="chat-bubble human' + (isNoise ? " noise" : "") + '">' +
+          '<div class="chat-role">Human &middot; turn ' + (i + 1) + "</div>" +
+          escape(turn.human) +
+          (isNoise ? '<span class="noise-label">Noise / non-question &mdash; model expected to stay silent</span>' : "") +
+          "</div>";
+      }
+      if (turn.assistant != null) {
+        html += '<div class="chat-bubble assistant">' +
+          '<div class="chat-role">Assistant</div>' +
+          escape(turn.assistant) +
+          "</div>";
+      }
+    });
+    $("task-content").innerHTML = html;
+    hideTurnControl();
+  }
+
+  function renderSI(sample) {
+    $("metadata-fields").innerHTML =
+      field("Video", escape(sample.video), true) +
+      field("Path", escape(videoPath(sample.video)), true) +
+      field("Speaker Timestamp", sample.timestamp + " s") +
+      field("Question", escape(sample.question)) +
+      field("Correct Speaker", '<span style="color:var(--good);font-weight:600;">' + escape(sample.answer) + "</span>");
+    setVideo($("video-container"), videoPath(sample.video), sample.timestamp);
+    $("task-content").innerHTML =
+      taskDesc("si") +
+      "<h2>Task</h2>" +
+      "<p>The video has been auto-seeked to <b>" + sample.timestamp + " s</b>, the moment the question is asked. " +
+      "The model must answer the question with the speaker's name.</p>";
+    hideTurnControl();
+  }
+
+  const renderers = { ap: renderAP, sg: renderSG, md: renderMD, pa: renderPA, pt: renderPT, si: renderSI };
+
+  // ------- Turn control (only for SG/MD) -------
+  function setupTurnControl(numTurns) {
+    const ctrl = $("turn-control");
+    const sel = $("turn-select");
+    sel.innerHTML = "";
+    for (let i = 0; i < numTurns; i++) {
+      const opt = document.createElement("option");
+      opt.value = i;
+      opt.textContent = (i + 1) + " / " + numTurns;
+      sel.appendChild(opt);
+    }
+    if (state.turnIdx >= numTurns) state.turnIdx = 0;
+    sel.value = state.turnIdx;
+    ctrl.style.display = "flex";
+  }
+  function hideTurnControl() {
+    $("turn-control").style.display = "none";
+  }
+
+  // ------- Main render -------
+  async function render() {
+    let data;
+    try {
+      data = await loadTask(state.task);
+    } catch (err) {
+      $("metadata-fields").innerHTML =
+        '<div class="error-msg"><b>Failed to load JSON:</b><br>' + escape(err.message) + '</div>';
+      $("video-container").innerHTML = "";
+      $("task-content").innerHTML = "";
+      return;
+    }
+    if (state.sampleIdx < 0) state.sampleIdx = 0;
+    if (state.sampleIdx >= data.length) state.sampleIdx = data.length - 1;
+
+    $("sample-input").max = data.length - 1;
+    $("sample-input").value = state.sampleIdx;
+    $("sample-counter").textContent = "/ " + (data.length - 1);
+    $("prev-btn").disabled = state.sampleIdx === 0;
+    $("next-btn").disabled = state.sampleIdx === data.length - 1;
+
+    const sample = data[state.sampleIdx];
+    renderers[state.task](sample);
+    renderStats(state.task, data, getCurrentDuration(state.task, sample));
+    renderInstruction(state.task, sample);
+  }
+
+  // ------- Init -------
+  async function init() {
+    await loadDurations();
+    const taskSel = $("task-select");
+    Object.keys(TASKS).forEach(k => {
+      const opt = document.createElement("option");
+      opt.value = k;
+      opt.textContent = TASKS[k].label;
+      taskSel.appendChild(opt);
+    });
+    taskSel.value = state.task;
+
+    taskSel.addEventListener("change", () => {
+      state.task = taskSel.value;
+      state.sampleIdx = 0;
+      state.turnIdx = 0;
+      render();
+    });
+    $("sample-input").addEventListener("change", () => {
+      state.sampleIdx = parseInt($("sample-input").value, 10) || 0;
+      state.turnIdx = 0;
+      render();
+    });
+    $("prev-btn").addEventListener("click", () => {
+      if (state.sampleIdx > 0) {
+        state.sampleIdx--;
+        state.turnIdx = 0;
+        render();
+      }
+    });
+    $("next-btn").addEventListener("click", () => {
+      state.sampleIdx++;
+      state.turnIdx = 0;
+      render();
+    });
+    $("turn-select").addEventListener("change", () => {
+      state.turnIdx = parseInt($("turn-select").value, 10) || 0;
+      render();
+    });
+    $("instr-toggle").checked = state.showInstruction;
+    $("instr-toggle").addEventListener("change", () => {
+      state.showInstruction = $("instr-toggle").checked;
+      localStorage.setItem("omnimmi-show-instr", state.showInstruction ? "1" : "0");
+      render();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA") return;
+      if (e.key === "ArrowLeft") { $("prev-btn").click(); }
+      else if (e.key === "ArrowRight") { $("next-btn").click(); }
+    });
+    render();
+  }
+  init();
+})();
+</script>
+</body>
+</html>

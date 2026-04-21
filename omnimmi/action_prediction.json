@@ -1,0 +1,36 @@
+[
+  {
+    "video": "51fc62f8-00f4-44e3-af9c-7ebb63da6c3d_378.mp4",
+    "question": "Given my responsibility to Prepare the fruit and plate, the video shows the progress, Can you provide an alternative solution for the next task?",
+    "answer": "put fruit on cutting board",
+    "vocab": [
+      "put fruit on cutting board",
+      "close cabinet",
+      "open cabinet",
+      "put knife on cutting board"
+    ]
+  },
+  {
+    "video": "grp-93d50e4c-0a3b-430a-8267-01fbe5f302f4_1.mp4",
+    "question": "My role involves preparing vegetable sauce, and the video highlights the task's progress, How does what I should do next align with my goals?",
+    "answer": "pours milk in jug",
+    "vocab": [
+      "pours milk in jug",
+      "mix ingredients with mixer whisk",
+      "chops sausage with knife",
+      "cuts tofu with knife",
+      "prepares vegetable sauce in pan",
+      "prepares cabbage on chopping board",
+      "stores cabbage in fridge",
+      "adds ingredients in bowl",
+      "heats oil in pan",
+      "stores beans seed in fridge",
+      "gathers ingredients on countertop",
+      "remove fillet from pack",
+      "stores flour in fridge",
+      "remove ginger from fridge",
+      "pours tofu in bowl",
+      "stores meat in fridge"
+    ]
+  }
+]

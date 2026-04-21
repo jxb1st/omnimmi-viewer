@@ -1,0 +1,18 @@
+[
+  {
+    "video": "rrTIeJRVGjg_360.0_510.0.mp4",
+    "question": "Inform me when the video shows the credits rolling.",
+    "answer": [
+      112,
+      134
+    ]
+  },
+  {
+    "video": "eBFyZ-JI_1s_210.0_360.0.mp4",
+    "question": "Inform me when the video shows a woman looking out at a large body of water.",
+    "answer": [
+      28,
+      52
+    ]
+  }
+]
