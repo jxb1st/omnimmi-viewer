@@ -835,14 +835,53 @@ video {
       '<span>max<b>' + fmtDuration(s.max) + '</b></span>' +
       '</div>';
 
+    // Overall duration histogram (stacked per task so you can see task contribution)
+    const perTaskKeys = Object.keys(TASKS);
+    const taskColors = ["#4dabf7", "#51cf66", "#b197fc", "#ffa94d", "#ffd43b", "#ff6b6b"];
+    const overallMax = Math.max.apply(null, s.counts) || 1;
+    html += '<h2 style="margin-top:18px;">Overall Duration Histogram &middot; all tasks combined</h2>';
+    html += '<div class="histogram">';
+    s.counts.forEach((c, i) => {
+      // per-task slice of this bucket
+      const stacks = perTaskKeys.map((k, ti) => {
+        const full = fullStats.per_task[FULL_STATS_KEY[k]];
+        const n = full && full.stats ? full.stats.counts[i] : 0;
+        return { label: TASKS[k].label, n, color: taskColors[ti % taskColors.length] };
+      }).filter(x => x.n > 0);
+      const wpct = (c / overallMax * 100).toFixed(2);
+      const spct = (c / s.n * 100).toFixed(1);
+      const totalStack = stacks.reduce((a, b) => a + b.n, 0) || 1;
+      let barInner = "";
+      stacks.forEach(st => {
+        const frac = (st.n / totalStack * 100).toFixed(3);
+        barInner += '<div style="height:100%;background:' + st.color + ';width:' + frac + '%;" title="' + st.label + ': ' + st.n + '"></div>';
+      });
+      html += '<div class="hist-row">' +
+        '<div class="hist-label">' + BUCKETS[i].label + '</div>' +
+        '<div class="hist-bar-wrap" style="overflow:hidden;"><div style="width:' + wpct + '%;height:100%;display:flex;border-radius:3px;">' + barInner + '</div></div>' +
+        '<div class="hist-count">' + c + '<span class="hist-pct">(' + spct + '%)</span></div>' +
+        '</div>';
+    });
+    html += '</div>';
+
+    // Legend for stacked bars
+    html += '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--muted);">';
+    perTaskKeys.forEach((k, ti) => {
+      html += '<span style="display:inline-flex;align-items:center;gap:5px;">' +
+        '<span style="width:10px;height:10px;background:' + taskColors[ti % taskColors.length] + ';border-radius:2px;"></span>' +
+        TASKS[k].label + '</span>';
+    });
+    html += '</div>';
+
     // Per-task mini breakdown
-    html += '<div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;">';
-    Object.keys(TASKS).forEach(k => {
+    html += '<h2 style="margin-top:18px;">Per-Task Breakdown</h2>';
+    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;">';
+    perTaskKeys.forEach((k, ti) => {
       const full = fullStats.per_task[FULL_STATS_KEY[k]];
       if (!full || !full.stats) return;
       const st = full.stats;
-      html += '<div style="border:1px solid var(--border);padding:8px 12px;border-radius:6px;background:var(--bg);">' +
-        '<div style="font-weight:600;color:var(--accent);font-size:13px;">' + TASKS[k].label + '</div>' +
+      html += '<div style="border:1px solid var(--border);padding:8px 12px;border-radius:6px;background:var(--bg);border-left:3px solid ' + taskColors[ti % taskColors.length] + ';">' +
+        '<div style="font-weight:600;color:' + taskColors[ti % taskColors.length] + ';font-size:13px;">' + TASKS[k].label + '</div>' +
         '<div style="color:var(--muted);font-size:11px;margin-top:4px;">' +
           'n=' + st.n +
           ' &middot; median ' + fmtDuration(st.median) +
