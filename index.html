@@ -606,9 +606,12 @@ video {
 
   async function loadFullStats() {
     try {
-      const res = await fetch("full_dataset_stats.json");
+      const res = await fetch("full_dataset_stats.json?v=2", { cache: "no-cache" });
       if (res.ok) fullStats = await res.json();
-    } catch (e) { /* overview panel will hide */ }
+      else console.warn("full_dataset_stats.json fetch failed:", res.status);
+    } catch (e) {
+      console.warn("full_dataset_stats.json fetch error:", e);
+    }
   }
 
   // Map viewer task key (ap/sg/md/pa/pt/si) to the full-stats JSON key.
